@@ -6,7 +6,7 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
-
+require('dotenv').config({ path: '.env' });
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
@@ -92,6 +92,7 @@ app.get('/callback', function(req, res) {
 
         var options = {
           url: 'https://api.spotify.com/v1/me/player/recently-played',
+          // url: 'https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=5',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
