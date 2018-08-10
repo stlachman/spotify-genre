@@ -35,7 +35,7 @@
   <body>
     <div class="container-fluid">
       <div id="login">
-        <h1>What have you been listening to?</h1>
+        <h1>How hipster are you?</h1>
         <a href="/login" class="btn btn-primary">Log in with Spotify</a>
       </div>
       <div id="loggedin">
@@ -49,10 +49,17 @@
     <script id="rp-template" type="text/x-handlebars-template">
       <div>
         <h3>Recently played tracks:</h3>
+
+        <div>
+          <h5>Popularity</h5>
+          <div id="popularity-chart"></div>
+        </div>
         {{#each items}}
         <iframe src='https://embed.spotify.com/?uri={{track.uri}}' width="300" height="75" frameborder="0" allowtransparency="true"></iframe>
+        {{item.name}}
         {{/each}}
       </div>
+
     </script>
 
     <script id="rp-analysis-template" type="text/x-handlebars-template">
@@ -79,18 +86,12 @@
             <div id="duration-chart"></div>
           </div>
 
-          <div>
-            <h5>Popularity</h5>
-            <div id="popularity-chart"></div>
-          </div>
         </div>
         <h5>Features</h5>
         <div id="features-chart"></div>
         <div id="mode-pie"></div>
         <p>Instrumental: <div class="bignumber">{{counts.instrumental}}</div></p>
         <p>Acoustic: <div class="bignumber">{{counts.acoustic}}</div></p>
-
-        <p>Popularity</p>
       </div>
     </script>
 

@@ -7,13 +7,15 @@ function getRecentlyPlayedAnalysis(recentlyPlayedObject) {
     var playedAtArray = [];
     var tempArray = [];
     var popular = [];
+    var name = [];
 
     console.log(recentlyPlayedObject.items);
     
 
     recentlyPlayedObject.items.forEach(function(item, index) {
         // console.log(item);
-        console.log(item.track.popularity);
+        // console.log(item.track.popularity);
+        console.log(item.track.name + ' ' + item.track.popularity);
         //context
         if(item.context) {
             if(item.context.type == "playlist") {
@@ -34,7 +36,10 @@ function getRecentlyPlayedAnalysis(recentlyPlayedObject) {
         tempArray = [];
 
         // popularity 
-        popular.push([index, item.track.popularity]);
+        popular.push([item.track.popularity ]);
+
+        // name 
+        name.push([item.track.name]);
     });
 
     analysisObject = {
@@ -44,7 +49,8 @@ function getRecentlyPlayedAnalysis(recentlyPlayedObject) {
             artistContextCount
         ],
         playedAt: playedAtArray,
-        popularity: popular
+        popularity: popular,
+        name: name
     }
 
     return analysisObject;

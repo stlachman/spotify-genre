@@ -73,21 +73,37 @@ function drawCharts(recentlyPlayedAnalysis, trackAnalysis) {
     chart.draw(data, options);
 
     // Popularity column chart
-    data = new google.visualization.DataTable();
-    data.addColumn('number', 'index');
-    data.addColumn('number', 'Popularity');
-    data.addRows(
-        recentlyPlayedAnalysis.popularity
-    );
+    // data = new google.visualization.DataTable();
+    // data.addColumn('number', 'index');
+    // data.addColumn('number', 'Popularity');
+    // // data.addColumn('string', 'Name');
+    // data.addRows(
+    //     recentlyPlayedAnalysis.popularity
+        
+    // );
 
-    var options = {'title':'Popularity',
-                    'width':800,
-                    'height':300,
-                    'colors': colours,
-                    'legend': 'none'};
+    // var options = {'title':'Popularity',
+    //                 'width':800,
+    //                 'height':300,
+    //                 'colors': colours,
+    //                 'legend': 'none'};
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('popularity-chart'));
-    chart.draw(data, options);
+    // var chart = new google.visualization.ColumnChart(document.getElementById('popularity-chart'));
+
+
+    // var data = new google.visualization.DataTable();
+    //     // data.addColumn('number', 'Popularity');
+    //     data.addColumn('string', 'Name');
+    //     data.addRows([
+    //     [ recentlyPlayedAnalysis.name]
+    // ]);
+
+    //     var table = new google.visualization.Table(document.getElementById('popularity-chart'));
+
+    //     table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+
+    // chart.draw(data, options);
 
     // Features column chart
     data = new google.visualization.DataTable();
