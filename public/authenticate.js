@@ -44,14 +44,17 @@ function getHashParams() {
 
             // names = names.slice(0, -1);
             // console.log(names);
-
-            var names = "";
+          
+            var popularity = "";
+            
             response.items.forEach(function(item) {
-              names += item + ',';
+              popularity += item.popularity + ',';
+                // const newPop = item.popularity.sort();
+                // console.log(newPop);
             });
 
-            names = names.slice(0, -1);
-            console.log(names);
+            popularity = popularity.slice(0, -1);
+            console.log(popularity);
            
             // $.ajax({
             //   url: 'https://api.spotify.com/v1/audio-features/?ids=' + ids,
