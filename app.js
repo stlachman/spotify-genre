@@ -44,7 +44,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-read-recently-played';
+  var scope = 'user-read-private user-read-email user-read-recently-played user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -91,8 +91,9 @@ app.get('/callback', function(req, res) {
             refresh_token = body.refresh_token;
 
         var options = {
-          url: 'https://api.spotify.com/v1/me/player/recently-played',
+          // url: 'https://api.spotify.com/v1/me/player/recently-played',
           // url: 'https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=5',
+          url: 'https://api.spotify.com/v1/me/top/artists',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };

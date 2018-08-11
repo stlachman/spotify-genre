@@ -27,7 +27,7 @@ function getHashParams() {
     if (access_token) {
       google.charts.load('current', {'packages':['corechart']});
       $.ajax({
-          url: 'https://api.spotify.com/v1/me/player/recently-played?limit=20',
+          url: 'https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=5',
           headers: {
             'Authorization': 'Bearer ' + access_token
           },
@@ -35,28 +35,39 @@ function getHashParams() {
             recentlyPlayedPlaceholder.innerHTML = recentlyPlayedTemplate(response);
             var recentlyPlayedAnalysis = getRecentlyPlayedAnalysis(response);
   
-            var ids = "";
+            // var names = "";
+            // response.items.forEach(function(item) {
+            // //   ids += item.id + ',';
+            //     names += item.name + ',';
+            // //   console.log(names);
+            // });
+
+            // names = names.slice(0, -1);
+            // console.log(names);
+
+            var names = "";
             response.items.forEach(function(item) {
-              ids += item.track.id + ',';
+              names += item + ',';
             });
+
+            names = names.slice(0, -1);
+            console.log(names);
+           
+            // $.ajax({
+            //   url: 'https://api.spotify.com/v1/audio-features/?ids=' + ids,
+            //   headers: {
+            //     'Authorization': 'Bearer ' + access_token
+            //   },
+            //   success: function(response) {
+            //     console.log(response);
+            //     var trackAnalysis = getTrackAnalysis(response.audio_features);
   
-            ids = ids.slice(0, -1);
+            //     rpAnalysisPlaceholder.innerHTML = rpAnalysisTemplate(trackAnalysis);
   
-            $.ajax({
-              url: 'https://api.spotify.com/v1/audio-features/?ids=' + ids,
-              headers: {
-                'Authorization': 'Bearer ' + access_token
-              },
-              success: function(response) {
-                console.log(response);
-                var trackAnalysis = getTrackAnalysis(response.audio_features);
+            //     google.charts.setOnLoadCallback(drawCharts(recentlyPlayedAnalysis, trackAnalysis));
   
-                rpAnalysisPlaceholder.innerHTML = rpAnalysisTemplate(trackAnalysis);
-  
-                google.charts.setOnLoadCallback(drawCharts(recentlyPlayedAnalysis, trackAnalysis));
-  
-              }
-            });
+            //   }
+            // });
   
             $('#login').hide();
             $('#loggedin').show();

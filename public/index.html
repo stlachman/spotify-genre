@@ -48,16 +48,17 @@
 
     <script id="rp-template" type="text/x-handlebars-template">
       <div>
-        <h3>Recently played tracks:</h3>
-
+        <h3>Top Played Artists:</h3>
+            <ul>
+            {{#each items}}
+                <li>Name: {{name}} &amp; Popularity: {{popularity}}</li>
+            {{/each}}
+            </ul>
         <div>
           <h5>Popularity</h5>
           <div id="popularity-chart"></div>
         </div>
-        {{#each items}}
-        <iframe src='https://embed.spotify.com/?uri={{track.uri}}' width="300" height="75" frameborder="0" allowtransparency="true"></iframe>
-        {{item.name}}
-        {{/each}}
+     
       </div>
 
     </script>
